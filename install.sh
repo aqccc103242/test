@@ -117,7 +117,7 @@ install_nginx(){
 	./oneinstack/addons.sh -i --ngx_lua_waf
 	rm -f /usr/local/openresty/nginx/conf/nginx.conf
 	wget -P /usr/local/openresty/nginx/conf https://test-web-site-resource.s3.ap-east-1.amazonaws.com/nginx.conf
-	wget -p /usr/local/openresty/nginx/conf https://test-web-site-resource.s3.ap-east-1.amazonaws.com/vhost.conf
+	wget -P /usr/local/openresty/nginx/conf https://test-web-site-resource.s3.ap-east-1.amazonaws.com/vhost.conf
 	echo "============================================================================"
 	echo -e "${green}环境安装完成，请在启动docker-compose、配置好域名和ssl证书之后手动修改nginx.conf和vhost.conf文件。 ${font}"
 	echo -e "${red}注意：1、为了隐藏真实IP，域名不要解析到真实后端服务器，之前有过解析记录指向该服务器IP请更换服务器IP。 ${font}"
