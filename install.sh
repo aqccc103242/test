@@ -110,7 +110,7 @@ fi
 
 echo -e "${green}Linux 发行版本      满足${font}"
 yum update -y
-yum install -y unzip
+yum install -y unzip wget
 
 install_nginx(){
 	wget https://test-web-site-resource.s3.ap-east-1.amazonaws.com/oneinstack.zip && unzip oneinstack.zip && ./oneinstack/install.sh --nginx_option 3
@@ -132,7 +132,7 @@ install_nginx(){
 
 download_yml(){
   wget -P /app https://test-web-site-resource.s3.ap-east-1.amazonaws.com/docker-compose.yml
-  echo "${yellow}文件已保存至/app目录下${font}"
+  echo -e "${yellow}文件已保存至/app目录下${font}"
 	echo -e "${green}Start installing OpenRestry${font}"
 	install_nginx
 }
@@ -145,10 +145,10 @@ install_dockercompose(){
   if [[ ! -d /app ]]; then
     #statements
     mkdir /app
-    echo "${yellow}app文件夹创建成功${font}"
+    echo -e "${yellow}app文件夹创建成功${font}"
   fi
   mkdir /app
-  echo "${red}是否要下载docker-compose.yml模板文件 y/n :${font}"
+  echo -e "${red}是否要下载docker-compose.yml模板文件 y/n :${font}"
   read -p "$(echo -e "(default y ):")" check_input_two
   [[ -z $check_input_two ]] && check_input_two="y"
   if [[ $check_input_two == "y" || $check_input_two == "Y" ]]; then
@@ -167,7 +167,7 @@ install_docker(){
   yum install -y yum-utils device-mapper-persistent-data lvm2
   yum-config-manager --add-repo https://download.docker.com/linux/centos/docker-ce.repo
   yum list docker-ce --showduplicates | sort -r
-  echo "${red}Please enter the version you want to install.:${font}"
+  echo -e "${red}Please enter the version you want to install.:${font}"
   read -p "$(echo -e "(default version: ${green}18.06.3.ce ${font}):")" check_input_one
   [[ -z $check_input_one ]] && check_input_one="18.06.3.ce"
   yum install -y docker-ce-$check_input_one
