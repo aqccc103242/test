@@ -147,7 +147,6 @@ install_dockercompose(){
     mkdir /app
     echo -e "${yellow}app文件夹创建成功${font}"
   fi
-  mkdir /app
   echo -e "${red}是否要下载docker-compose.yml模板文件 y/n :${font}"
   read -p "$(echo -e "(default y ):")" check_input_two
   [[ -z $check_input_two ]] && check_input_two="y"
